@@ -13,8 +13,8 @@ Puppet version: 3.8.3
 
 ### Dependencies
 The following puppet modules are required for these roles and profiles to work:
-puppetlabs-apache
-puppetlabs-firewall
-puppetlabs-haproxy
-duritong-sysctl
-arioch-keepalived
+<br> puppetlabs-apache
+<br> puppetlabs-firewall
+<br> puppetlabs-haproxy
+<br> duritong-sysctl
+<br> arioch-keepalived
