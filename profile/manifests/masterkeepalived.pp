@@ -1,7 +1,7 @@
 # Submitted by: Adjoa Darien
 # Last updated: Dec-22-2015
-# Configures Keepalived (/etc/keepalived/keepalived.conf) to set up two 
-# load balancer nodes in an active-passive configuration with HTTP failover. 
+# Configures Keepalived (/etc/keepalived/keepalived.conf) to set up load 
+# balancer nodes in an active-passive configuration with HTTP failover. 
 class profile::masterkeepalived{
   include keepalived
   
