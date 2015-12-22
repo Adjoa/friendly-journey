@@ -1,3 +1,5 @@
+# Submitted by: Adjoa Darien
+# Last updated: Dec-22-2015
 # Defines the default firewall settings
 class profile::firewall(
   $portnum = hiera('apacheport'),
