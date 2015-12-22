@@ -12,7 +12,8 @@ nodes running Ubuntu 14.04 and 2 loadbalancer nodes running CentOS 6.6.
 <br> Puppet version: 3.8.3
 
 ### Dependencies
-The following puppet modules are required for these roles and profiles to work:
+To adopt these roles and profiles the following puppet modules, the following
+<br> modules must be installed using the `puppet module install` command:
 <br> puppetlabs-apache
 <br> puppetlabs-firewall
 <br> puppetlabs-haproxy
