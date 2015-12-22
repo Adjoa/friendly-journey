@@ -1,10 +1,18 @@
+# Submitted by: Adjoa Darien
+# Last updated: Dec-22-2015
+# Configures Keepalived (/etc/keepalived/keepalived.conf) to set up load
+# balancer nodes in an active-passive configuration with HTTP failover.
 class profile::backupkeepalived {
   include keepalived
 
+  # Checks whether the haproxy service is running
   keepalived::vrrp::script { 'check_haproxy':
     script => 'killall -0 haproxy',
   }
 
+  # Defines this load balancer as the BACKUP in the active-passive configuration.
+  # - unicast_peers parameter contains an array of IP addresses that correspond
+  #   to the failover nodes.
   keepalived::vrrp::instance { 'VI_50':
     interface         => 'eth1',
     state             => 'BACKUP',
