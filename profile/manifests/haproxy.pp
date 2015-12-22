@@ -1,3 +1,5 @@
+# Submitted by: Adjoa Darien
+# Last updated: Dec-22-2015
 # Configures a static implementation of HAProxy; an implementation that requires
 # the details of each Apache web server be known in advance. 
 class profile::haproxy ( 
