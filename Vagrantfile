@@ -14,7 +14,6 @@ Vagrant.configure(2) do |config|
     puppet.vm.box = "ubuntu/trusty64"
     puppet.vm.hostname = "puppet.#{DOMAIN}"
     puppet.vm.network "private_network", ip: "#{SUBNET}.200"
-
   end
   
 # Web Servers  
