@@ -6,7 +6,9 @@ class profile::haproxy (
   class { 'haproxy': }
   
   # Sets up a listening service configuration block (listen block) inside the 
-  # /etc/haproxy/haproxy.cfg file on the HAProxy load balancer.
+  # /etc/haproxy/haproxy.cfg file on the HAProxy load balancer. A "listen" section
+  # defines a complete proxy with its frontend and backend parts combined in one 
+  # section. It is generally useful for TCP-only traffic.
   # - collected_exported setting indicates that Puppet's exported resources feature
   #   will not be used to collect information about the web servers being managed
   # - ipaddress setting defines the shared virtual IP address to be contacted by 
