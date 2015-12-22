@@ -1,3 +1,5 @@
+# Submitted by: Adjoa Darien
+# Last updated: Dec-22-2015
 # Defines a virtual host and prepares the web server to communicate with a
 # transparent HAProxy server.
 class profile::vhost ( 
