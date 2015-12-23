@@ -26,7 +26,7 @@ class profile::apache (
   # instructs the server not to log requests for the file check.txt
   apache::vhost { 'first.example.com':
     port               => $portnum,
-    docroot            => '/var/www/first',
+    docroot            => '/var/www/first.example.com',
     access_log_format  => 'combined',
     access_log_env_var => "!dontlog",
     setenvif           => ['Request_URI "^/check\.txt$" dontlog',],
