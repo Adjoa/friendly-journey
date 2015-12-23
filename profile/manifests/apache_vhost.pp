@@ -2,7 +2,7 @@
 # Last updated: Dec-22-2015
 # Defines a virtual host and prepares the web server to communicate with a
 # transparent HAProxy server.
-class profile::apache ( 
+class profile::apache_vhost ( 
   $portnum = hiera('apacheport'), 
   $docroot = $::apache::params::docroot, 
 ){
