@@ -4,7 +4,8 @@
 # transparent HAProxy server.
 class profile::apache_vhost ( 
   $portnum = hiera('apacheport'), 
-  $docroot = $::apache::params::docroot, 
+#  $docroot = "${::apache::params::docroot}", 
+#  $docroot = '/var/www'
 ){
 
   # default_vhost setting allows for the creation of customized Apache virtual hosts
@@ -18,7 +19,7 @@ class profile::apache_vhost (
   }
 
   # HAProxy will regularly check on the server's health by requesting the file check.txt
-  file { "${docroot}/check.txt":
+  file { "/var/www/check.txt":
      ensure => present,
   }
   
@@ -30,5 +31,13 @@ class profile::apache_vhost (
     access_log_format  => 'combined',
     access_log_env_var => "!dontlog",
     setenvif           => ['Request_URI "^/check\.txt$" dontlog',],
+  }
+
+#  file {["${docroot}/first.example.com/", "${docroot}/first.example.com/default.html"]:
+#  file {"${::apache::params::docroot}":
+  file {"/var/www/first.example.com":
+    ensure  => present,
+#    source  => "puppet:///modules/profile/default.html",
+#    require => Apache::Vhost['first.example.com'],
   }
 }
