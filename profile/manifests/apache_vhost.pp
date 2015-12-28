@@ -3,7 +3,7 @@
 # Defines a virtual host and prepares the web server to communicate with a
 # transparent HAProxy server.
 class profile::apache_vhost ( 
-  $portnum = hiera('apacheport'), 
+  $portnum = hiera('apache_port'), 
 ){
   # default_vhost setting allows for the creation of customized Apache virtual hosts
   # log_formats setting instructs the web server to log the ip address of the requesting
