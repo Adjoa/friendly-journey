@@ -1,9 +1,9 @@
 # Submitted by: Adjoa Darien
-# Last updated: Dec-22-2015
+# Last updated: Dec-28-2015
 # Configures a static implementation of HAProxy; an implementation that requires
 # the details of each Apache web server be known in advance. 
 class profile::haproxy ( 
-  $portnum = hiera('haproxy_port') 
+  $haproxy_port = hiera('haproxy_port') 
 ){
   class { 'haproxy': }
   
@@ -24,7 +24,7 @@ class profile::haproxy (
   haproxy::listen { 'puppet00':
     collect_exported => false,
     ipaddress        => '10.80.15.109',
-    ports            => "${portnum}",
+    ports            => "${haproxy_port}",
     options          => { 'mode' => 'http', },
   }
 
@@ -38,7 +38,7 @@ class profile::haproxy (
     listening_service => 'puppet00',
     server_names      => 'http1.example.haproxy',
     ipaddresses       => '10.80.15.101',
-    ports             => $portnum,
+    ports             => $haproxy_port,
     options           => 'check',
   }
 
@@ -46,7 +46,7 @@ class profile::haproxy (
     listening_service => 'puppet00',
     server_names      => 'http2.example.haproxy',
     ipaddresses       => '10.90.15.102',
-    ports             =>  $portnum,
+    ports             =>  $haproxy_port,
     options           => 'check',
   }
 
@@ -59,5 +59,11 @@ class profile::haproxy (
   # Allow HAProxy to bind to the shared virtual IP address
   sysctl::value { "net.ipv4.ip_nonlocal_bind": 
     value => "1", 
+  }
+
+  firewall {'103 allow access to haproxy':
+    dport  => $haproxy_port,
+    proto  => tcp,
+    action => accept,
   }
 }
