@@ -1,10 +1,10 @@
 # Submitted by: Adjoa Darien
-# Last updated: Dec-22-2015
+# Last updated: Dec-28-2015
 # Defines a virtual host and prepares the web server to communicate with a
 # transparent HAProxy server.
 class profile::apache_vhost ( 
   $portnum = hiera('apacheport'), 
-#  $docroot = "${::apache::params::docroot}", 
+  $docroot = $::apache::params::docroot, 
 #  $docroot = '/var/www'
 ){
 
@@ -27,17 +27,16 @@ class profile::apache_vhost (
   # instructs the server not to log requests for the file check.txt
   apache::vhost { 'first.example.com':
     port               => $portnum,
-    docroot            => '/var/www/first.example.com',
+    docroot            => "${docroot}/first.example.com",
+#    docroot            => "${::apache::params::docroot}/first.example.com",
     access_log_format  => 'combined',
     access_log_env_var => "!dontlog",
     setenvif           => ['Request_URI "^/check\.txt$" dontlog',],
   }
 
-#  file {["${docroot}/first.example.com/", "${docroot}/first.example.com/default.html"]:
-#  file {"${::apache::params::docroot}":
-  file {"/var/www/first.example.com":
+  file {"${::apache::params::docroot}/first.example.com/default.html":
     ensure  => present,
-#    source  => "puppet:///modules/profile/default.html",
-#    require => Apache::Vhost['first.example.com'],
+    source  => "puppet:///modules/profile/default.html",
+    require => Apache::Vhost['first.example.com'],
   }
 }
