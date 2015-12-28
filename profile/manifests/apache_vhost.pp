@@ -4,10 +4,7 @@
 # transparent HAProxy server.
 class profile::apache_vhost ( 
   $portnum = hiera('apacheport'), 
-  $docroot = $::apache::params::docroot, 
-#  $docroot = '/var/www'
 ){
-
   # default_vhost setting allows for the creation of customized Apache virtual hosts
   # log_formats setting instructs the web server to log the ip address of the requesting
   # client (instead of the proxy's ip address) which is being passed to it from the HTTP
@@ -19,7 +16,7 @@ class profile::apache_vhost (
   }
 
   # HAProxy will regularly check on the server's health by requesting the file check.txt
-  file { "/var/www/check.txt":
+  file { "${::apache::params::docroot}/check.txt":
      ensure => present,
   }
   
@@ -27,8 +24,7 @@ class profile::apache_vhost (
   # instructs the server not to log requests for the file check.txt
   apache::vhost { 'first.example.com':
     port               => $portnum,
-    docroot            => "${docroot}/first.example.com",
-#    docroot            => "${::apache::params::docroot}/first.example.com",
+    docroot            => "${::apache::params::docroot}/first.example.com",
     access_log_format  => 'combined',
     access_log_env_var => "!dontlog",
     setenvif           => ['Request_URI "^/check\.txt$" dontlog',],
