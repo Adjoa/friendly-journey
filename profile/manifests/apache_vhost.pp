@@ -35,4 +35,10 @@ class profile::apache_vhost (
     source  => "puppet:///modules/profile/default.html",
     require => Apache::Vhost['first.example.com'],
   }
+
+  firewall {'102 allow access to apache':
+    dport  => [$portnum],
+    proto  => tcp,
+    action => accept,
+ }
 }
