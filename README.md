@@ -1,7 +1,7 @@
 # friendly-journey
 
 ### Description
-Demonstrates the use of the role and profiles Puppet design pattern to 
+Demonstrates the use of the 'role and profiles' Puppet design pattern to 
 configure a pair of active-passive load balancers using HAProxy and 
 Keepalived to route traffic to a small cluster of webservers. 
 
