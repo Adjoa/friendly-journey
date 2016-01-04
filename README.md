@@ -5,7 +5,7 @@ The code in this repository demonstrates the use of the ‘role and profiles’ 
 
 The ‘roles and profiles’ design pattern is an abstraction that is used to organise Puppet code. It enables users to glean the information that is most useful to them without a necessarily in-depth knowledge of the Puppet language. It is a bridge between business logic (roles) and the technology needed to deploy it (profiles). 
 
-For the business logic level, the `loadbalancer_primary` and `loadbalancer_passive` roles were created to represent the active and passive load balancers. These roles grouped together the profiles for each of the following components: firewall, haproxy and keepalived.
+At the business logic level, the `loadbalancer_primary` and `loadbalancer_passive` roles were created to represent the active and passive load balancers. These roles grouped together the profiles for each of the following components: firewall, haproxy and keepalived.
 
 The `firewall` profile ensures that the ports required for nodes to be accessible to the Puppet master and the web remain open. The `haproxy` profile describes the web server nodes, enables IP forwarding and binds the load balancer to a virtual IP address. The `keepalived` profiles distinguish between the active and passive load balancers.
 
