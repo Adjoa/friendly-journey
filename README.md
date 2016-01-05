@@ -11,7 +11,7 @@ The `firewall` profile ensures that the ports required for nodes to be accessibl
 
 
 ### Requirements
-This code was tested within the master-agent configuration of Puppet with 5 Vagrant virtual machines: 1 puppetmaster running Ubuntu 14.04, 2 webserver nodes running Ubuntu 14.04 and 2 loadbalancer nodes running CentOS 6.6.
+This code was tested within the master-agent architecture using 5 Vagrant virtual machines: 1 puppetmaster running Ubuntu 14.04, 2 webserver nodes running Ubuntu 14.04 and 2 loadbalancer nodes running CentOS 6.6.
 <br> Puppet version: 3.8.3
 
 ### Dependencies
